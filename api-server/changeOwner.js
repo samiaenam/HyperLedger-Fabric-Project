@@ -38,7 +38,7 @@ async function main( params ) {
         const network = await gateway.getNetwork('mychannel');
 
         // Get the contract from the network.
-        const contract = network.getContract('fabcar');
+        const contract = network.getContract('Property');
         console.log({ contract, CL: contract.network })
         // contract.network
         const key = params.key
@@ -46,7 +46,7 @@ async function main( params ) {
 
         // Submit the specified transaction.
         // changeCarOwner transaction - requires 2 args , ex: ('changeCarOwner', 'CAR12', 'Dave')
-        await contract.submitTransaction('changeCarOwner', `${ key }`, `${ newOwner }`)
+        await contract.submitTransaction('changePropertyOwner', `${ key }`, `${ newOwner }`)
         console.log('Change Owner Transaction has been submitted');
 
         // Disconnect from the gateway.

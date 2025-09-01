@@ -42,14 +42,16 @@ async function main( params ) {
 
         // gathering payload data
         const key = params.key
-        const make = params.make
-        const model = params.model 
-        const color = params.color 
-        const owner = params.owner 
+        const address = params.address
+        const city = params.city
+        const property_size = params.property_size
+        const property_type = params.property_type 
+        const owner_name = params.owner_name 
+        
 
         // Submit the specified transaction.
         // createCar transaction - requires 5 argument, ex: ('createCar', 'CAR12', 'Honda', 'Accord', 'Black', 'Tom')
-        await contract.submitTransaction('createCar', `${ key }`, `${ make }`, `${ model }`, `${ color }`, `${ owner }`);
+        await contract.submitTransaction('createProperty',`${ key }`, `${ address }`, `${ city }`, `${ property_size }`, `${ property_type }`, `${ owner_name }`);
         console.log('Transaction has been submitted');
 
         // Disconnect from the gateway.

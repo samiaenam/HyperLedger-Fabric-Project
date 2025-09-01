@@ -4,7 +4,7 @@
 const express = require('express')
 const cors = require('cors')
 const query = require('./query');
-const createCar = require('./createCar')
+const createProperty = require('./createProperty')
 const changeOwner = require('./changeOwner')
 const bodyParser = require('body-parser')
 
@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 
 
 // get all car
-app.get('/get-car', function (req, res) {
+app.get('/get-property', function (req, res) {
     query.main( req.query )
     .then(result => {
         const parsedData = JSON.parse( result )
@@ -31,7 +31,7 @@ app.get('/get-car', function (req, res) {
 
         // if user search car
         if(  req.query.key ){
-            carList = [
+            propertyList = [
                 {
                     Key: req.query.key,
                     Record: {
@@ -39,12 +39,12 @@ app.get('/get-car', function (req, res) {
                     }
                 }
             ]
-            res.send( carList )
+            res.send( propertyList )
             return
         }
 
-        carList = parsedData
-        res.send( carList )
+        propertyList = parsedData
+        res.send( propertyList )
     })
     .catch(err => {
         console.error({ err })
@@ -54,7 +54,7 @@ app.get('/get-car', function (req, res) {
 
 // create a new car
 app.post('/create', function (req, res) {
-    createCar.main( req.body  )
+    createProperty.main( req.body  )
     .then(result => {
         res.send({message: 'Created successfully'})
     })
