@@ -38,7 +38,7 @@ async function main( params ) {
         const network = await gateway.getNetwork('mychannel');
 
         // Get the contract from the network.
-        const contract = network.getContract('fabcar');
+        const contract = network.getContract('property');
 
         // gathering payload data
         const property_id = params.property_id
