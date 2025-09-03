@@ -45,10 +45,10 @@ class Property extends Contract {
         return JSON.stringify(allResults);
     }
    
-    async queryPropertyById(ctx, propertyId) {
-        const propertyAsBytes = await ctx.stub.getState(propertyId); 
+    async queryPropertyById(ctx, property_id) {
+        const propertyAsBytes = await ctx.stub.getState(property_id); 
         if (!propertyAsBytes || propertyAsBytes.length === 0) {
-            throw new Error(`Property with ID ${propertyId} does not exist`);
+            throw new Error(`Property with ID ${property_id} does not exist`);
         }
         return propertyAsBytes.toString();
     }
@@ -75,12 +75,12 @@ class Property extends Contract {
         return JSON.stringify(results);
     }
 
-    async updateProperty(ctx, propertyId, address, city, property_size, owner_name, property_type) {
+    async updateProperty(ctx, property_id, address, city, property_size, owner_name, property_type) {
         console.info('============= START : Update Property ===========');
 
-        const propertyAsBytes = await ctx.stub.getState(propertyId);
+        const propertyAsBytes = await ctx.stub.getState(property_id);
         if (!propertyAsBytes || propertyAsBytes.length === 0) {
-            throw new Error(`Property with ID ${propertyId} does not exist`);
+            throw new Error(`Property with ID ${property_id} does not exist`);
         }
 
         const property = {
@@ -92,7 +92,7 @@ class Property extends Contract {
             property_type,
         };
 
-        await ctx.stub.putState(propertyId, Buffer.from(JSON.stringify(property)));
+        await ctx.stub.putState(property_id, Buffer.from(JSON.stringify(property)));
 
         console.info('============= END : Update Property ===========');
     }

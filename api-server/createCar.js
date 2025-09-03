@@ -41,7 +41,7 @@ async function main( params ) {
         const contract = network.getContract('fabcar');
 
         // gathering payload data
-        const key = params.key
+        const property_id = params.property_id
         const address = params.address
         const city = params.city
         const property_size = params.property_size
@@ -51,7 +51,7 @@ async function main( params ) {
 
         // Submit the specified transaction.
         // createCar transaction - requires 5 argument, ex: ('createCar', 'CAR12', 'Honda', 'Accord', 'Black', 'Tom')
-        await contract.submitTransaction('createProperty',`${ key }`, `${ address }`, `${ city }`, `${ property_size }`, `${ property_type }`, `${ owner_name }`);
+        await contract.submitTransaction('createProperty',`${ property_id }`, `${ address }`, `${ city }`, `${ property_size }`, `${ property_type }`, `${ owner_name }`);
         console.log('Transaction has been submitted');
 
         // Disconnect from the gateway.
